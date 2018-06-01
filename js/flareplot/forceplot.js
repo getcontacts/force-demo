@@ -1,6 +1,4 @@
 
-// import '../../vendor/d3v5.2/d3.js';
-
 import { Flaremodel } from './flaremodel.js';
 
 export class Forceplot {
@@ -74,6 +72,8 @@ export class Forceplot {
   }
 
   _updateVertices() {
+
+
     const vertices = this.flareModel.getVertices();
     console.log(vertices);
 
@@ -121,7 +121,7 @@ export class Forceplot {
 
   _updateEdges() {
     // Map edges in the model to edges ({source: .., target: ..}) connecting vertices in the hierarchy
-    const leaves = this.hierarchy.leaves();
+    const leaves = ;
     const edges = this.flareModel.getEdges()
       .map(function (e) {
         const hierarchySource = leaves.find(l => l.data.name === e.v1.name);
@@ -129,6 +129,13 @@ export class Forceplot {
 
         return {source: hierarchySource, target: hierarchyTarget, modelEdge: e};
       });
+
+    const simulation = d3.forceSimulation()
+      .force("link", d3.forceLink().id(function(d) { return d.id; }))
+      .force("charge", d3.forceManyBody())
+      .force("center", d3.forceCenter(this.width / 2, this.height / 2));
+
+    console.log(this.flareModel.getEdges());
 
     const lineGenerator = d3.radialLine()
       .curve(d3.curveBundle.beta(0.85))

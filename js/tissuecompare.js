@@ -1,6 +1,6 @@
-import * as fp from './flareplot/flareplot.js';
-import {FingerprintPanel} from "./flareplot/fingerprintpanel.js";
+
 import {Flareplot} from "./flareplot/flareplot.js";
+import {Forceplot} from "./flareplot/forceplot.js";
 
 
 export class TissueViewer {
@@ -42,8 +42,17 @@ export class TissueViewer {
     });
   }
 
-  setupForceplot() {
+  setupForceplot(containerSelector) {
+    const div = d3.select(containerSelector)
+      .append("div")
+      .style("width", this.size + "px")
+      .style("height", this.size + "px")
+      .style("position", "absolute")
+      .style("left", "0px")
+      .style("top", "0px")
+      .attr("id", "forceplotDiv");
 
+    this.forceplot = new Forceplot(this.flaremodel, "auto", "#forceplotDiv");
   }
 
   setupFingerprints() {
