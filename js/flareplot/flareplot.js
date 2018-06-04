@@ -70,7 +70,7 @@ export class Flareplot {
 
     // Create hierarchy based on the flareModel (innerRadius must be set)
     // this.hierarchy = this._createHierarchy();
-    // .. moved to _updateVertices
+    // .. moved to _updateView
 
     this.flareModel.addVertexChangeListener(this);
     this.flareModel.addFrameListener(this);

@@ -26,25 +26,24 @@ export class Forceplot {
     }
     this.height = this.width;
     layoutOptions = Forceplot._fillLayoutOptions(layoutOptions);
+    this.inactiveEdgeOpacity = layoutOptions.inactiveEdgeOpacity;
 
     this.svg = d3.select(containerSelector)
       .append('svg')
-      .style('overflow', 'visible')
       .attr('width', this.width)
       .attr('height', this.height);
     this.svgroot = this.svg;
 
-    this.vertexGroup = this.svgroot.append("g");
     this.edgeGroup = this.svgroot.append("g");
+    this.vertexGroup = this.svgroot.append("g");
 
     this.flareModel.addVertexChangeListener(this);
     this.flareModel.addFrameListener(this);
     this.flareModel.addHighlightListener(this);
     this.flareModel.addToggleListener(this);
 
-    this._updateVertices();
-    this._updateEdges();
-    this._updateTracks();
+    this._updateView();
+    // this._updateEdges();
   }
 
   fire(event) {
@@ -64,91 +63,69 @@ export class Forceplot {
         break;
 
       case 'vertexChange':
-        this._updateVertices();
-        this._updateEdges();
-        this._updateTracks();
+        this._updateView();
+        // this._updateEdges();
         break;
     }
   }
 
-  _updateVertices() {
+  _updateView() {
+    const vertices = this.flareModel.getVertices()
+      .filter((v) => v.edges.length > 0)
+      .map((v) => {return {id: v.name, modelVertex: v};});
 
+    const trackMap = this.flareModel.getTrack().properties;
 
-    const vertices = this.flareModel.getVertices();
-    console.log(vertices);
-
-    const vertexElements = this.vertexGroup
-      .selectAll('g.vertex')
-      .data(vertices, function (d) { return d.data.name; });
+    let vertexElements = this.vertexGroup
+      .selectAll('.vertex')
+      .data(vertices, function (d) { return d.id; });
 
     // Enter
     vertexElements
-      .enter().append('g')
+      .enter().append('circle')
       .attr('class', 'vertex')
+      .attr("r", function(d){
+        return 3 + trackMap.get(d.id).size * 10;
+      })
+      .attr("fill", function(d) {
+        return trackMap.get(d.id).color;
+      })
       // .attr('id', function (d) { return 'node-' + d.data.key; })
-      .style('font-size', (textHeight * 1.2) + 'px')
-      .style('cursor', 'pointer')
-      .attr('transform', d => { return 'rotate(' + (d.x - 90) + ')translate(' + this.textR + ')'; })
-      .append('text')
-      .style('user-select', 'none')
-      .attr('dy', '.31em')
-      .attr('text-anchor', function (d) { return d.x < 180 ? 'start' : 'end'; })
-      .attr('transform', function (d) { return d.x < 180 ? null : 'rotate(180)'; })
-      .text(function (d) { return d.data.name; })
       .on('mouseenter', d => {
-        this.flareModel.setVertexHighlighted(d.data.name, true);
+        this.flareModel.setVertexHighlighted(d.id, true);
       })
       .on('mouseleave', d => {
-        this.flareModel.setVertexHighlighted(d.data.name, false);
+        this.flareModel.setVertexHighlighted(d.id, false);
       })
       .on('click', d => {
-        const isToggled = this.flareModel.vertexToggled(d.data.name);
-
-        this.flareModel.setVertexToggled(d.data.name, !isToggled);
+        const isToggled = this.flareModel.vertexToggled(d.id);
+        this.flareModel.setVertexToggled(d.id, !isToggled);
       });
-
-    // Update
-    vertexElements
-      .attr('transform', d => { return 'rotate(' + (d.x - 90) + ')translate(' + this.textR + ')'; })
-      .select('text')
-      .attr('text-anchor', function (d) { return d.x < 180 ? 'start' : 'end'; })
-      .attr('transform', function (d) { return d.x < 180 ? null : 'rotate(180)'; });
 
     // Exit
     vertexElements
       .exit().remove();
-  }
 
-  _updateEdges() {
+    vertexElements = this.vertexGroup.selectAll('.vertex');
+
+    ///////// Update edges \\\\\\\
+
     // Map edges in the model to edges ({source: .., target: ..}) connecting vertices in the hierarchy
-    const leaves = ;
     const edges = this.flareModel.getEdges()
       .map(function (e) {
-        const hierarchySource = leaves.find(l => l.data.name === e.v1.name);
-        const hierarchyTarget = leaves.find(l => l.data.name === e.v2.name);
+        const hierarchySource = vertices.find(v => v.id === e.v1.name);
+        const hierarchyTarget = vertices.find(v => v.id === e.v2.name);
 
         return {source: hierarchySource, target: hierarchyTarget, modelEdge: e};
       });
 
-    const simulation = d3.forceSimulation()
-      .force("link", d3.forceLink().id(function(d) { return d.id; }))
-      .force("charge", d3.forceManyBody())
-      .force("center", d3.forceCenter(this.width / 2, this.height / 2));
-
-    console.log(this.flareModel.getEdges());
-
-    const lineGenerator = d3.radialLine()
-      .curve(d3.curveBundle.beta(0.85))
-      .radius(function (d) { return d.y; })
-      .angle(function (d) { return d.x / 180 * Math.PI; });
-
-    const edgeElements = this.edgeGroup
+    let edgeElements = this.edgeGroup
       .selectAll('.edge')
       .data(edges, function (d) { return d.modelEdge.v1.name + '...' + d.modelEdge.v2.name; });
 
     // Enter
     edgeElements
-      .enter().append('path')
+      .enter().append('line')
       .attr('class', function (d) {
         return 'edge ' +
           'source-' + d.modelEdge.v1.name + ' ' +
@@ -157,7 +134,7 @@ export class Forceplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight;
+        return count === 0 ? 0 : count * d.modelEdge.weight * 2;
       })
       .style('stroke', function (d) { return d.modelEdge.color; })
       .style('fill', 'none')
@@ -166,16 +143,42 @@ export class Forceplot {
         const targetToggled = this.flareModel.vertexToggled(d.modelEdge.v2.name);
 
         return (sourceToggled || targetToggled) ? 1.0 : this.inactiveEdgeOpacity;
-      })
-      .attr('d', function (d) { return lineGenerator(d.source.path(d.target)); });
+      });
 
-    // Update
-    edgeElements
-      .attr('d', function (d) { return lineGenerator(d.source.path(d.target)); });
+    // // Update
+    // edgeElements
+    //   .attr('d', function (d) { return lineGenerator(d.source.path(d.target)); });
 
     // Exit
     edgeElements
       .exit().remove();
+
+    edgeElements = this.edgeGroup.selectAll('.edge');
+
+    const simulation = d3.forceSimulation()
+      .force("collide", d3.forceCollide().radius(14))
+      .force("link", d3.forceLink().id(function(d) { return d.id; }))
+      .force("charge", d3.forceManyBody().strength(-170))
+      .force("center", d3.forceCenter(this.width / 2, this.height / 2));
+
+    simulation
+      .nodes(vertices)
+      .on("tick", ticked);
+
+    simulation.force("link")
+      .links(edges);
+
+    function ticked() {
+      edgeElements
+        .attr("x1", (d) => d.source.x)
+        .attr("y1", (d) => d.source.y)
+        .attr("x2", (d) => d.target.x)
+        .attr("y2", (d) => d.target.y);
+
+      vertexElements
+        .attr("cx", (d) => d.x)
+        .attr("cy", (d) => d.y);
+    }
   }
 
   _updateFrames() {
@@ -186,58 +189,6 @@ export class Forceplot {
 
         return count === 0 ? 0 : count * d.modelEdge.weight;
       });
-  }
-
-  _updateTracks() {
-    const leaves = this.hierarchy.leaves();
-    const textHeight = this._computeVertexTextHeight();
-    const arcAngle = Math.asin(textHeight / (2 * this.textR));
-    // const arcAngle = 0.8 * 2 * Math.PI / leaves.length;
-    const track = this.flareModel.getTrack().properties;
-
-    const arc = d3.arc()
-      .innerRadius(d => {
-        const trackSize = track.get(d.data.name).size;
-
-        return this.trackR + this.trackWidth * (1 - trackSize) / 2;
-      })
-      .outerRadius(d => {
-        const trackSize = track.get(d.data.name).size;
-
-        return this.trackR + this.trackWidth * (1 + trackSize) / 2;
-      })
-      .startAngle(d => (d.x * Math.PI / 180) - arcAngle)
-      .endAngle(d => (d.x * Math.PI / 180) + arcAngle);
-
-    const trackElements = this.trackGroup
-      .selectAll('path')
-      .data(leaves, function (d) { return d.data.name; });
-
-    // Enter
-    trackElements
-      .enter().append('path')
-      .style('cursor', 'pointer')
-      .style('fill', d => track.get(d.data.name).color)
-      .attr('d', arc)
-      .on('mouseenter', d => {
-        this.flareModel.setVertexHighlighted(d.data.name, true);
-      })
-      .on('mouseleave', d => {
-        this.flareModel.setVertexHighlighted(d.data.name, false);
-      })
-      .on('click', d => {
-        const isToggled = this.flareModel.vertexToggled(d.data.name);
-
-        this.flareModel.setVertexToggled(d.data.name, !isToggled);
-      });
-
-    // Update
-    trackElements
-      .attr('d', arc);
-
-    // Exit
-    trackElements
-      .exit().remove();
   }
 
   _updateHighlight(highlightedNames) {
@@ -331,69 +282,6 @@ export class Forceplot {
 
   rangeSum(first, last) {
     this.flareModel.setFrames({type: 'range', begin: first, end: last});
-  }
-
-  /**
-   * Read a flare JSON from a file and return a promise that delivers a Flareplot object using the additional
-   * parameters.
-   *
-   * @param {string} fname
-   * @param {number|string} width
-   * @param {string} containerSelector
-   * @param {Object} layoutOptions
-   * @returns {Promise<Flareplot, Error>}
-   */
-  static createFlareplotFromFile(fname, width, containerSelector, layoutOptions) {
-    if (width === 'auto' && window) {
-      const containerStyle = window.getComputedStyle(d3.select(containerSelector).node());
-      const containerPadding = parseFloat(containerStyle.paddingLeft) + parseFloat(containerStyle.paddingRight);
-
-      width = d3.select(containerSelector).node().clientWidth - containerPadding;
-    }
-
-    let height = width;
-    let svg = d3.select(containerSelector)
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height);
-
-    svg
-      .append('g')
-      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
-      .append('text')
-      .attr('text-anchor', 'middle')
-      .style('font-size', '1.7em')
-      .style('fill', '#acacac')
-      .text('Loading ' + fname);
-
-    return new Promise(function (resolve, reject) {
-      d3.json(fname, function (error, flare) {
-        if (error) {
-          let reason = '';
-
-          if (error.currentTarget && error.currentTarget.statusText) {
-            reason = error.currentTarget.statusText;
-          } else if (error instanceof SyntaxError) {
-            reason = 'Syntax error: ' + error.message;
-          }
-
-          svg.style('background', '#EEE');
-          svg.select('text')
-            .text('Error parsing ' + fname);
-          svg.select('g').append('text')
-            .attr('dy', '2rem')
-            .attr('text-anchor', 'middle')
-            .style('font-size', '1.5em')
-            .style('fill', '#acacac')
-            .text(reason);
-
-          reject(error);
-        } else {
-          svg.remove();
-          resolve(new Flareplot(flare, width, containerSelector, layoutOptions));
-        }
-      });
-    });
   }
 }
 

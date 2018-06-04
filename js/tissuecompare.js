@@ -14,10 +14,11 @@ export class TissueViewer {
         that.setupForceplot(containerSelector);
         that.setupFingerprints();
       });
+    this.setupSwitcher(containerSelector);
   }
 
   setupFlareplot(containerSelector) {
-    const div = d3.select(containerSelector)
+    this.flarediv = d3.select(containerSelector)
       .append("div")
       .style("width", this.size + "px")
       .style("height", this.size + "px")
@@ -37,22 +38,56 @@ export class TissueViewer {
             .style("font-size", "12px")
             .style("font-family", "verdana");
 
+          that.flarediv.style("display", "none")
           resolve();
         });
     });
   }
 
   setupForceplot(containerSelector) {
-    const div = d3.select(containerSelector)
+    this.forcediv = d3.select(containerSelector)
       .append("div")
-      .style("width", this.size + "px")
-      .style("height", this.size + "px")
+      .style("width", this.width + "px")
+      .style("height", this.width + "px")
       .style("position", "absolute")
       .style("left", "0px")
       .style("top", "0px")
+      .style("display", "block")
       .attr("id", "forceplotDiv");
 
     this.forceplot = new Forceplot(this.flaremodel, "auto", "#forceplotDiv");
+  }
+
+  setupSwitcher(containerSelector) {
+
+    const switchbox = d3.select(containerSelector)
+      .append("div")
+      .attr("class", "switchcontainer");
+
+    const that = this;
+
+    const label = switchbox.append("span")
+      .style("text-align", "center")
+      .style("width", "20px")
+      .style("user-select", "none")
+      .style("cursor", "pointer")
+      .html("&#x25CC;")
+      .on("click", function(){
+        if (this.flare) {
+          that.forcediv.style("display", "block");
+          that.flarediv.style("display", "none");
+          d3.select(this).html("&#x25CC;")
+          this.flare = false;
+        } else {
+          that.forcediv.style("display", "none");
+          that.flarediv.style("display", "block");
+          d3.select(this).html("\u29DF")
+          this.flare = true;
+        }
+      })
+      .node().flare = false;
+
+
   }
 
   setupFingerprints() {

@@ -4,22 +4,42 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <script src="vendor/d3_5.2.0/d3.js"></script>
+
   <style>
 
     #flareDiv svg{
       font-family: Verdana;
       font-size: 1.2em;
     }
+
+    .switchcontainer{
+      position:absolute;
+      font-size: 30px;
+      line-height: 30px;
+      text-align: center;
+      text-decoration:none;
+      z-index: 10;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #cacaca;
+      border-radius:15px;
+    }
+    .switchcontainer span{
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
   </style>
 </head>
 <body>
 
-<div id="tissueCompareDiv"></div>
+<div id="tissueCompareDiv">
+</div>
 
 <script type="module">
   import { TissueViewer } from "./js/tissuecompare.js"
 
-  new TissueViewer("#tissueCompareDiv", 800);
+  window.tissueviewer = new TissueViewer("#tissueCompareDiv", 800);
 
 </script>
 </body>
