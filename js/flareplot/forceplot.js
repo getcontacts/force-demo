@@ -36,6 +36,7 @@ export class Forceplot {
 
     this.edgeGroup = this.svgroot.append("g");
     this.vertexGroup = this.svgroot.append("g");
+    this.labelGroup = this.svgroot.append("g");
 
     this.flareModel.addVertexChangeListener(this);
     this.flareModel.addFrameListener(this);
@@ -108,6 +109,31 @@ export class Forceplot {
 
     vertexElements = this.vertexGroup.selectAll('.vertex');
 
+
+
+    let labelElements = this.labelGroup
+      .selectAll('.vertex-label')
+      .data(vertices, function (d) { return d.id; });
+
+    // Enter
+    labelElements
+      .enter().append('text')
+      .attr('class', 'vertex-label')
+      .attr('text-anchor', 'middle')
+      .attr('alignment-baseline', 'hanging')
+      .style('pointer-events', 'none')
+      .style("font-size", function(d){
+        return 10 + trackMap.get(d.id).size * 3;
+      })
+      .text((d) => d.id);
+
+
+    // Exit
+    labelElements
+      .exit().remove();
+
+    labelElements = this.labelGroup.selectAll('.vertex-label');
+
     ///////// Update edges \\\\\\\
 
     // Map edges in the model to edges ({source: .., target: ..}) connecting vertices in the hierarchy
@@ -134,7 +160,7 @@ export class Forceplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight * 2;
+        return count === 0 ? 0 : count * d.modelEdge.weight * 1.5;
       })
       .style('stroke', function (d) { return d.modelEdge.color; })
       .style('fill', 'none')
@@ -156,9 +182,9 @@ export class Forceplot {
     edgeElements = this.edgeGroup.selectAll('.edge');
 
     const simulation = d3.forceSimulation()
-      .force("collide", d3.forceCollide().radius(14))
+      .force("collide", d3.forceCollide().radius(18))
       .force("link", d3.forceLink().id(function(d) { return d.id; }))
-      .force("charge", d3.forceManyBody().strength(-170))
+      .force("charge", d3.forceManyBody().strength(-80))
       .force("center", d3.forceCenter(this.width / 2, this.height / 2));
 
     simulation
@@ -178,6 +204,10 @@ export class Forceplot {
       vertexElements
         .attr("cx", (d) => d.x)
         .attr("cy", (d) => d.y);
+
+      labelElements
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y + 4 + trackMap.get(d.id).size * 10);
     }
   }
 
@@ -187,7 +217,7 @@ export class Forceplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight;
+        return count === 0 ? 0 : count * d.modelEdge.weight * 2;
       });
   }
 

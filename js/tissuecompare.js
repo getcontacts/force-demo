@@ -1,30 +1,33 @@
 
 import {Flareplot} from "./flareplot/flareplot.js";
+import {FingerprintPanel} from "./flareplot/fingerprintpanel.js";
 import {Forceplot} from "./flareplot/forceplot.js";
 
 
 export class TissueViewer {
 
-  constructor(containerSelector, size){
+  constructor(containerSelector, fingerprintSelector, size){
     this.width = size;
     this.height = size;
     const that = this;
     this.setupFlareplot(containerSelector)
       .then(function(){
         that.setupForceplot(containerSelector);
-        that.setupFingerprints();
+        that.setupFingerprints(fingerprintSelector);
       });
     this.setupSwitcher(containerSelector);
   }
 
+
   setupFlareplot(containerSelector) {
     this.flarediv = d3.select(containerSelector)
       .append("div")
-      .style("width", this.size + "px")
-      .style("height", this.size + "px")
-      .style("position", "absolute")
-      .style("left", "0px")
+      .style("width", this.width + "px")
+      .style("height", this.width + "px")
+      .style("position", "relative")
+      .style("left", "50%")
       .style("top", "0px")
+      .style("margin-left", (-this.width/2)+"px")
       .attr("id", "flareplotDiv");
 
     const that = this;
@@ -49,9 +52,10 @@ export class TissueViewer {
       .append("div")
       .style("width", this.width + "px")
       .style("height", this.width + "px")
-      .style("position", "absolute")
-      .style("left", "0px")
+      .style("position", "relative")
+      .style("left", "50%")
       .style("top", "0px")
+      .style("margin-left", (-this.width/2)+"px")
       .style("display", "block")
       .attr("id", "forceplotDiv");
 
@@ -90,7 +94,8 @@ export class TissueViewer {
 
   }
 
-  setupFingerprints() {
-
+  setupFingerprints(fingerprintSelector) {
+    this.fingerprintpanel = new FingerprintPanel(this.flaremodel, 20, fingerprintSelector);
+    console.log(this.fingerprintpanel);
   }
 }

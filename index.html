@@ -7,17 +7,37 @@
 
   <style>
 
-    #flareDiv svg{
+    svg{
       font-family: Verdana;
       font-size: 1.2em;
     }
 
+    #forceplotDiv svg{
+      font-size: 0.8em;
+    }
+
+    #forceplotDiv .vertex {
+      opacity: 0.9;
+    }
+    #forceplotDiv .vertex-label {
+      stroke: #696969;
+      stroke-width: 0.2px;
+      user-select: none;
+    }
+
+    .fp-header {
+      font-family: Verdana;
+      font-size: 0.8em;
+    }
+
     .switchcontainer{
       position:absolute;
+      top: 10px;
+      left: 10px;
       font-size: 30px;
       line-height: 30px;
       text-align: center;
-      text-decoration:none;
+      text-decoration: none;
       z-index: 10;
       width: 30px;
       height: 30px;
@@ -33,13 +53,13 @@
 </head>
 <body>
 
-<div id="tissueCompareDiv">
-</div>
+<div id="tissueCompareDiv"></div>
+<div id="tissueFingerprintDiv"></div>
 
 <script type="module">
   import { TissueViewer } from "./js/tissuecompare.js"
 
-  window.tissueviewer = new TissueViewer("#tissueCompareDiv", 800);
+  window.tissueviewer = new TissueViewer("#tissueCompareDiv", "#tissueFingerprintDiv", 600);
 
 </script>
 </body>
