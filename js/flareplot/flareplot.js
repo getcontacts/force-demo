@@ -194,7 +194,7 @@ export class Flareplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight;
+        return count === 0 ? 0 : Math.sqrt(count * d.modelEdge.weight);
       })
       .style('stroke', function (d) { return d.modelEdge.color; })
       .style('fill', 'none')
@@ -221,7 +221,7 @@ export class Flareplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight;
+        return count === 0 ? 0 : Math.sqrt(count * d.modelEdge.weight);
       });
   }
 

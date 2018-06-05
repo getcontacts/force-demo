@@ -36,6 +36,7 @@ export class TissueViewer {
         .then(function (data) {
           that.flareplot = new Flareplot(data, that.width, "#flareplotDiv");
           that.flaremodel = that.flareplot.getModel();
+          that.flaremodel.setFrames({ type: 'range', begin: 0, end: 23 });
 
           d3.selectAll(".vertex")
             .style("font-size", "12px")

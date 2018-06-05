@@ -6,630 +6,630 @@
         {
           "color":"#1501D6",
           "nodeName":"CXCR4",
-          "size":1.0
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ADRB2",
-          "size":0.8333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"AGTR1",
-          "size":0.625
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OPRD",
-          "size":0.625
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"5HT2A",
-          "size":0.5833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"DRD2",
-          "size":0.5833333333333334
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAI2",
-          "size":0.5416666666666666
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PAR1",
-          "size":0.5416666666666666
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ADRB1",
-          "size":0.5
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"BKRB2",
-          "size":0.4583333333333333
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OPRM",
-          "size":0.4583333333333333
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAI1",
-          "size":0.4583333333333333
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PAR2",
-          "size":0.4166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"DRD1",
-          "size":0.375
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNA11",
-          "size":0.375
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCR3",
-          "size":0.375
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"TA2R",
-          "size":0.375
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNA15",
-          "size":0.375
+          "size":0.8
         },
         {
           "color":"#00E600",
           "nodeName":"GRK5",
-          "size":0.375
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OPSD",
-          "size":0.33333333333333337
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCR1",
-          "size":0.33333333333333337
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NPY4R",
-          "size":0.33333333333333337
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"AGTR2",
-          "size":0.33333333333333337
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"AA1R",
-          "size":0.33333333333333337
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"SSR2",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCR10",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ADA2A",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAO",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"MC4R",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ACM3",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#00E600",
           "nodeName":"GRK6",
-          "size":0.2916666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ADA1D",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ADA1A",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNA13",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CNR1",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAQ",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"EDNRB",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"EDNRA",
-          "size":1.25
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ACM2",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAI3",
-          "size":0.25
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNA14",
-          "size":1.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PAR3",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"AA2AR",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"S1PR1",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PI2R",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"5HT2C",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#FF3B00",
           "nodeName":"ARRB2",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"FPR1",
-          "size":0.20833333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OXYR",
-          "size":0.16666666666666669
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NK1R",
-          "size":0.16666666666666669
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PTAFR",
-          "size":0.16666666666666669
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNA12",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NK2R",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NPFF2",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"V1AR",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"SSR1",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#FF3B00",
           "nodeName":"ARRC",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OPRK",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"LPAR1",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"LPAR2",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"MC5R",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"S1PR4",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCR7",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAZ",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"MTLR",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NK3R",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"HRH4",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GASR",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PE2R1",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCR4",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"MTR1A",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"LSHR",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ACM4",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CXCR3",
-          "size":0.125
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PE2R2",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OX1R",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"V1BR",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"5HT1E",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"SSR4",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"RL3R2",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#FF3B00",
           "nodeName":"ARRS",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OPRX",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCKAR",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ADA2C",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NPY2R",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OX2R",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"RXFP2",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"MC3R",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"5HT1F",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NPY1R",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ACTHR",
-          "size":0.08333333333333334
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"OPSX",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GNRHR",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"P2RY1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GP151",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NPFF1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CX3C1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"XCR1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GRPR",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#FF9000",
           "nodeName":"GNAT1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"LPAR3",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NPY5R",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"C3AR",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GHSR",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CNR2",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CCR9",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GPR17",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"BKRB1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"CXCR6",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"FPR2",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NMBR",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GP183",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"5HT1B",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"PE2R3",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GPR1",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"ACM5",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"MAS",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#00E600",
           "nodeName":"GRK4",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"GPR37",
-          "size":0.04166666666666667
+          "size":0.8
         },
         {
           "color":"#1500D6",
           "nodeName":"NTR2",
-          "size":0.04166666666666667
+          "size":0.8
         }
       ]
     }
   ],
   "frameDict":{
+    "0":"Amygdala",
+    "1":"Cerebellum peduncles",
+    "2":"Cingulate cortex",
+    "3":"DRG",
+    "4":"Hypothalamus",
+    "5":"Medulla oblongata",
+    "6":"Occipital lobe",
+    "7":"Olfactory bulb",
+    "8":"Parietal lobe",
+    "9":"Pituitary",
+    "10":"Pons",
+    "11":"Prefrontal cortex",
+    "12":"Superior cervical ganglion",
+    "13":"Temporal lobe",
+    "14":"Thalamus",
+    "15":"Trigeminal ganglion",
+    "16":"Whole brain",
+    "17":"Caudate nucleus",
+    "18":"Cerebellum",
+    "19":"Ciliary ganglion",
     "20":"Fetal brain",
     "21":"Spinal cord",
-    "22":"Subthalamic nucleus",
-    "1":"Cerebellum peduncles",
-    "0":"Amygdala",
-    "3":"DRG",
-    "2":"Cingulate cortex",
-    "5":"Medulla oblongata",
-    "4":"Hypothalamus",
-    "7":"Olfactory bulb",
-    "6":"Occipital lobe",
-    "9":"Pituitary",
-    "8":"Parietal lobe",
-    "11":"Prefrontal cortex",
-    "10":"Pons",
-    "13":"Temporal lobe",
-    "12":"Superior cervical ganglion",
-    "15":"Trigeminal ganglion",
-    "14":"Thalamus",
-    "17":"Caudate nucleus",
-    "16":"Whole brain",
-    "19":"Ciliary ganglion",
-    "18":"Cerebellum"
+    "22":"Subthalamic nucleus"
   },
   "edges":[
     {
@@ -2919,6 +2919,6 @@
   ],
   "defaults":{
     "edgeColor":"rgba(100,100,100)",
-    "edgeWidth":3
+    "edgeWidth":1
   }
 }

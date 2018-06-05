@@ -101,7 +101,11 @@ export class Forceplot {
       .on('click', d => {
         const isToggled = this.flareModel.vertexToggled(d.id);
         this.flareModel.setVertexToggled(d.id, !isToggled);
-      });
+      })
+      .call(d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended));
 
     // Exit
     vertexElements
@@ -160,7 +164,8 @@ export class Forceplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight * 1.5;
+        return count === 0 ? 0 : Math.sqrt(count * d.modelEdge.weight) + 2 ;
+        // return count === 0 ? 0 : d.modelEdge.weight * 5 ;
       })
       .style('stroke', function (d) { return d.modelEdge.color; })
       .style('fill', 'none')
@@ -209,6 +214,24 @@ export class Forceplot {
         .attr("x", (d) => d.x)
         .attr("y", (d) => d.y + 4 + trackMap.get(d.id).size * 10);
     }
+
+    function dragstarted(d) {
+      if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(d) {
+      d.fx = d3.event.x;
+      d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+      if (!d3.event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+      d.fixed = true;
+    }
   }
 
   _updateFrames() {
@@ -217,7 +240,7 @@ export class Forceplot {
       .style('stroke-width', d => {
         const count = this.flareModel.frameCount(d.modelEdge);
 
-        return count === 0 ? 0 : count * d.modelEdge.weight * 2;
+        return count === 0 ? 0 : Math.sqrt(count * d.modelEdge.weight) + 2;
       });
   }
 
