@@ -107,6 +107,21 @@ export class Forceplot {
         .on("drag", dragged)
         .on("end", dragended));
 
+    //Update
+    vertexElements
+      .style("opacity", (d) => {
+        console.log('update '+d)
+        for (const e = 0; e < d.modelVertex.edges.length; e+=1) {
+          const edge = d.modelVertex.edges[e];
+          const count = this.flareModel.frameCount(edge);
+          if (count > 0) {
+            return 1;
+          }
+        }
+
+        return 0.4;
+      });
+
     // Exit
     vertexElements
       .exit().remove();
@@ -194,6 +209,7 @@ export class Forceplot {
 
     simulation
       .nodes(vertices)
+      .alphaDecay(0.0045945826)
       .on("tick", ticked);
 
     simulation.force("link")
@@ -242,6 +258,35 @@ export class Forceplot {
 
         return count === 0 ? 0 : Math.sqrt(count * d.modelEdge.weight) + 2;
       });
+
+    this.vertexGroup
+      .selectAll('.vertex')
+      .style("opacity", (d) => {
+        for (let e = 0; e < d.modelVertex.edges.length; e+=1) {
+          const edge = d.modelVertex.edges[e];
+          const count = this.flareModel.frameCount(edge);
+          if (count > 0) {
+            return 1;
+          }
+        }
+
+        return 0.2;
+      });
+
+    this.labelGroup
+      .selectAll('.vertex-label')
+      .style("opacity", (d) => {
+        for (let e = 0; e < d.modelVertex.edges.length; e+=1) {
+          const edge = d.modelVertex.edges[e];
+          const count = this.flareModel.frameCount(edge);
+          if (count > 0) {
+            return 1;
+          }
+        }
+
+        return 0.2;
+      });
+
   }
 
   _updateHighlight(highlightedNames) {
