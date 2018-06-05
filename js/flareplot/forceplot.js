@@ -71,6 +71,7 @@ export class Forceplot {
   }
 
   _updateView() {
+    const that = this;
     const vertices = this.flareModel.getVertices()
       .filter((v) => v.edges.length > 0)
       .map((v) => {return {id: v.name, modelVertex: v};});
@@ -98,11 +99,11 @@ export class Forceplot {
       .on('mouseleave', d => {
         this.flareModel.setVertexHighlighted(d.id, false);
       })
-      .on('click', d => {
-        const isToggled = this.flareModel.vertexToggled(d.id);
-        this.flareModel.setVertexToggled(d.id, !isToggled);
+      .on('click', function(d) {
+        const isToggled = that.flareModel.vertexToggled(d.id);
+        that.flareModel.setVertexToggled(d.id, !isToggled);
+        release.call(this, d);
       })
-      .on('dblclick', doubleclicked)
       .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
@@ -245,14 +246,15 @@ export class Forceplot {
 
     function dragended(d) {
       if (!d3.event.active) simulation.alphaTarget(0);
-      d3.select(this).attr("stroke-dasharray", "5,5")
+      d3.select(this).attr("stroke-dasharray", "5,5");
       // d.fx = null;
       // d.fy = null;
       // d.fx = d.x;
       // d.fy = d.y;
     }
-    function doubleclicked(d) {
-      d3.select(this).attr("stroke-dasharray", null)
+    function release(d) {
+      console.log(this);
+      d3.select(this).attr("stroke-dasharray", null);
       d.fx = null;
       d.fy = null;
     }
