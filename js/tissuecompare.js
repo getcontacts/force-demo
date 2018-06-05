@@ -32,7 +32,7 @@ export class TissueViewer {
 
     const that = this;
     return new Promise(resolve => {
-      d3.json("gpcr_brain.json")
+      d3.json("gpcr_brain_track.json")
         .then(function (data) {
           that.flareplot = new Flareplot(data, that.width, "#flareplotDiv");
           that.flaremodel = that.flareplot.getModel();
