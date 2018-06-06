@@ -14,6 +14,7 @@ export class TissueViewer {
       .then(function(){
         that.setupForceplot(containerSelector);
         that.setupFingerprints(fingerprintSelector);
+        that.setupHover();
       });
     this.setupSwitcher(containerSelector);
   }
@@ -97,6 +98,38 @@ export class TissueViewer {
 
   setupFingerprints(fingerprintSelector) {
     this.fingerprintpanel = new FingerprintPanel(this.flaremodel, 20, fingerprintSelector);
-    console.log(this.fingerprintpanel);
+  }
+
+  setupHover(){
+    const that = this;
+
+    d3.json("summaries.json")
+      .then(function (summaries) {
+
+        const infoDiv = d3.select("body")
+          .append("div")
+          .attr("class", "infobox")
+          .style("opacity", 0);
+
+        d3.selectAll(".vertex")
+          .on('mouseenter', function(d){
+            const summary = summaries[d.id];
+            if (summary) {
+              infoDiv.style("opacity", 1)
+                .html(summary);
+            }
+          })
+          // .on('mousemove', function(){
+          //   const mousex = d3.event.clientX;
+          //   const mousey = d3.event.clientY;
+          //   infoDiv
+          //     .style("left", (mousex - 150)+"px")
+          //     .style("top", (mousey + 20)+"px")
+          // })
+          .on('mouseleave', function(){
+            infoDiv.style("opacity", 0)
+          })
+
+      });
   }
 }

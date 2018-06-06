@@ -87,7 +87,7 @@ export class Forceplot {
       .enter().append('circle')
       .attr('class', 'vertex')
       .attr("r", function(d){
-        return 3 + trackMap.get(d.id).size * 10;
+        return 5 + trackMap.get(d.id).size * 8;
       })
       .attr("fill", function(d) {
         return trackMap.get(d.id).color;
