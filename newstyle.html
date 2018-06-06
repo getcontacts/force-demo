@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brain tissue forceplot demo</title>
+  <script src="vendor/d3_5.2.0/d3.js"></script>
+
+  <style>
+
+    svg{
+      font-family: Verdana;
+      font-size: 1.2em;
+    }
+
+    #forceplotDiv svg{
+      font-size: 0.8em;
+    }
+
+    #forceplotDiv .vertex {
+      opacity: 0.9;
+      stroke-width: 2px;
+      stroke: white;
+    }
+    #forceplotDiv .vertex-label {
+      stroke: #696969;
+      stroke-width: 0.2px;
+      user-select: none;
+    }
+
+    .fp-header {
+      font-family: Verdana;
+      font-size: 0.8em;
+    }
+
+    .switchcontainer{
+      position:absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 30px;
+      line-height: 30px;
+      text-align: center;
+      text-decoration: none;
+      z-index: 10;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #cacaca;
+      border-radius:15px;
+    }
+    .switchcontainer span{
+      width: 100%;
+      text-align: center;
+      z-index: 10;
+    }
+    .fp-cell-active {
+      background-color: #dadada;
+      color: #b8b8b8;
+    }
+    .fp-cell-inactive {
+      color: #dadada;
+    }
+  </style>
+</head>
+<body>
+
+<div id="tissueCompareDiv"></div>
+<div id="tissueFingerprintDiv"></div>
+
+<script type="module">
+  import { TissueViewer } from "./js/tissuecompare.js"
+
+  window.tissueviewer = new TissueViewer("#tissueCompareDiv", "#tissueFingerprintDiv", 600);
+
+</script>
+</body>
+</html>

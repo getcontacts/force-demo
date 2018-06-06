@@ -138,12 +138,14 @@ export class FingerprintPanel {
       .style('margin-left', -(numCols * cellWidth / 2) + 'px')
       .on('mouseover', function () {
         d3.select(this).style('border-style', 'solid')
+          .style('z-index', 9)
           .style('margin-top', '-' + activeRowBorderWidth + 'px')
           .style('margin-left', -(activeRowBorderWidth + numCols * cellWidth / 2) + 'px');
       })
       .on('mouseout', function (d) {
         if (!d.clicked) {
           d3.select(this).style('border-style', 'none')
+            .style('z-index', null)
             .style('margin-top', '0px')
             .style('margin-left', -(numCols * cellWidth / 2) + 'px');
         }
@@ -157,12 +159,14 @@ export class FingerprintPanel {
         });
         rows.each(function () {
           d3.select(this).style('border-style', 'none')
+            .style('z-index', null)
             .style('margin-top', '0px')
             .style('margin-left', -(numCols * cellWidth / 2) + 'px');
         });
 
         d.clicked = true;
         d3.select(this).style('border-style', 'solid')
+          .style('z-index', 10)
           .style('margin-top', '-' + activeRowBorderWidth + 'px')
           .style('margin-left', -(activeRowBorderWidth + numCols * cellWidth / 2) + 'px');
 
