@@ -16,6 +16,19 @@
       color: #8f8f8f;
     }
 
+    #titleDiv .legenditem{
+      font-size: 13px;
+      margin-top: 10px;
+      vertical-align: center;
+    }
+    #titleDiv .legendsymbol {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border: 2px solid white;
+      border-radius: 10px;
+    }
+
     .infobox {
       font-family: Verdana;
       font-size: 0.8em;
@@ -51,7 +64,7 @@
       font-size: 0.8em;
     }
 
-    .switchcontainer{
+    .switchcontainer, .fingerprintswitchcontainer{
       position:absolute;
       top: 10px;
       left: 10px;
@@ -70,12 +83,29 @@
       text-align: center;
       z-index: 10;
     }
+    .fingerprintswitchcontainer {
+      font-size: 10px;
+      font-family: monospace;
+      top: 60px;
+    }
   </style>
 </head>
 <body>
 
 <div id="titleDiv">
   Protein interaction networks across human brain tissues
+  <div class="legenditem">
+    <div class="legendsymbol" style="background-color:blue"></div> G-protein coupled receptor
+  </div>
+  <div class="legenditem">
+    <div class="legendsymbol" style="background-color:orange"></div> G-protein
+  </div>
+  <div class="legenditem">
+    <div class="legendsymbol" style="background-color:red"></div> Arrestin
+  </div>
+  <div class="legenditem">
+    <div class="legendsymbol" style="background-color:#00be00"></div> GPCR kinase
+  </div>
 </div>
 <div id="tissueCompareDiv"></div>
 <div id="tissueFingerprintDiv"></div>

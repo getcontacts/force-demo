@@ -14,9 +14,11 @@ export class TissueViewer {
       .then(function(){
         that.setupForceplot(containerSelector);
         that.setupFingerprints(fingerprintSelector);
+        d3.select("#tissueFingerprintDiv").style("display", "none")
         that.setupHover();
       });
     this.setupSwitcher(containerSelector);
+    this.setupFingerprintSwitcher(containerSelector);
   }
 
 
@@ -96,7 +98,30 @@ export class TissueViewer {
 
   }
 
+  setupFingerprintSwitcher(containerSelector) {
+
+    const switchbox = d3.select(containerSelector)
+      .append("div")
+      .attr("class", "fingerprintswitchcontainer")
+      .style("cursor", "pointer")
+      .on("click", function(){
+        const fpdiv = d3.select("#tissueFingerprintDiv");
+        if (fpdiv.style("display") == "none") {
+          fpdiv.style("display", "block");
+        } else {
+          fpdiv.style("display", "none");
+        }
+      });
+
+    switchbox.append("span")
+      .style("text-align", "center")
+      .style("width", "20px")
+      .style("user-select", "none")
+      .html("+-")
+  }
+
   setupFingerprints(fingerprintSelector) {
+
     this.fingerprintpanel = new FingerprintPanel(this.flaremodel, 20, fingerprintSelector);
   }
 

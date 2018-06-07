@@ -102,6 +102,9 @@ export class Forceplot {
       .on('click', function(d) {
         const isToggled = that.flareModel.vertexToggled(d.id);
         that.flareModel.setVertexToggled(d.id, !isToggled);
+        // release.call(this, d);
+      })
+      .on('dblclick', function(d) {
         release.call(this, d);
       })
       .call(d3.drag()
@@ -112,7 +115,6 @@ export class Forceplot {
     //Update
     vertexElements
       .style("opacity", (d) => {
-        console.log('update '+d)
         for (const e = 0; e < d.modelVertex.edges.length; e+=1) {
           const edge = d.modelVertex.edges[e];
           const count = this.flareModel.frameCount(edge);
@@ -235,25 +237,24 @@ export class Forceplot {
 
     function dragstarted(d) {
       if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-      d.fx = d.x;
-      d.fy = d.y;
+      // d.fx = d.x;
+      // d.fy = d.y;
     }
 
     function dragged(d) {
       d.fx = d3.event.x;
       d.fy = d3.event.y;
+      d3.select(this).attr("stroke-dasharray", "5,5");
     }
 
     function dragended(d) {
       if (!d3.event.active) simulation.alphaTarget(0);
-      d3.select(this).attr("stroke-dasharray", "5,5");
       // d.fx = null;
       // d.fy = null;
       // d.fx = d.x;
       // d.fy = d.y;
     }
     function release(d) {
-      console.log(this);
       d3.select(this).attr("stroke-dasharray", null);
       d.fx = null;
       d.fy = null;
